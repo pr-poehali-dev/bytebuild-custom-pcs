@@ -162,13 +162,13 @@ const Index = () => {
                   value={budget}
                   onValueChange={setBudget}
                   min={30000}
-                  max={300000}
+                  max={150000}
                   step={10000}
                   className="w-full"
                 />
                 <div className="flex justify-between text-sm text-muted-foreground mt-2">
                   <span>30 000 ₽</span>
-                  <span>300 000 ₽</span>
+                  <span>150 000 ₽</span>
                 </div>
               </div>
 
