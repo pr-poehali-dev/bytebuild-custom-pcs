@@ -80,7 +80,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="text-3xl">⚡</div>
-            <span className="text-2xl font-bold gradient-racing bg-clip-text text-transparent">ByteBuild</span>
+            <span className="text-2xl font-bold text-primary">ByteBuild</span>
           </div>
           <div className="hidden md:flex gap-6">
             <a href="#calculator" className="hover:text-primary transition-colors">Калькулятор</a>
