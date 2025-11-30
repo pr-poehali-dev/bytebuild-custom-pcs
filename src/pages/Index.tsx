@@ -4,11 +4,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
+import { AuthDialog } from '@/components/AuthDialog';
+import { CartSheet } from '@/components/CartSheet';
 
 const Index = () => {
   const [budget, setBudget] = useState([80000]);
   const [purpose, setPurpose] = useState('gaming');
+  const [user, setUser] = useState<any>(null);
+  const [token, setToken] = useState<string | null>(null);
+  const [authOpen, setAuthOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const { toast } = useToast();
 
   const configurations = {
     gaming: [
@@ -74,6 +82,41 @@ const Index = () => {
     { title: 'Compact Beast', description: 'Мощь в компактном корпусе', emoji: '📦' },
   ];
 
+  const handleAuth = (userData: any, userToken: string) => {
+    setUser(userData);
+    setToken(userToken);
+    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('token', userToken);
+    toast({ title: 'Вход выполнен!', description: `Добро пожаловать, ${userData.name || userData.email}` });
+  };
+
+  const addToCart = async (build: any) => {
+    if (!user) {
+      setAuthOpen(true);
+      return;
+    }
+
+    try {
+      await fetch('https://functions.poehali.dev/c0799a34-2ce3-475b-9e1e-fa0970e0acb6', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-User-Id': user.id.toString(),
+        },
+        body: JSON.stringify({
+          build_name: build.name,
+          build_price: build.price,
+          build_specs: build.specs,
+          build_category: build.category,
+          quantity: 1,
+        }),
+      });
+      toast({ title: 'Добавлено в корзину!', description: build.name });
+    } catch (err) {
+      toast({ title: 'Ошибка', description: 'Не удалось добавить в корзину', variant: 'destructive' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -89,10 +132,25 @@ const Index = () => {
             <a href="#portfolio" className="hover:text-primary transition-colors">Портфолио</a>
             <a href="#team" className="hover:text-primary transition-colors">Команда</a>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 glow-cyan">
-            <Icon name="MessageCircle" className="mr-2" size={18} />
-            Заказать
-          </Button>
+          <div className="flex gap-2">
+            {user ? (
+              <>
+                <Button variant="ghost" onClick={() => setCartOpen(true)}>
+                  <Icon name="ShoppingCart" className="mr-2" size={18} />
+                  Корзина
+                </Button>
+                <Button variant="outline">
+                  <Icon name="User" className="mr-2" size={18} />
+                  {user.name || user.email}
+                </Button>
+              </>
+            ) : (
+              <Button onClick={() => setAuthOpen(true)} className="bg-primary hover:bg-primary/90">
+                <Icon name="LogIn" className="mr-2" size={18} />
+                Войти
+              </Button>
+            )}
+          </div>
         </div>
       </nav>
 
@@ -252,9 +310,9 @@ const Index = () => {
                   <div className="text-2xl font-black text-primary mb-4">
                     {build.price.toLocaleString('ru-RU')} ₽
                   </div>
-                  <Button className="w-full" variant="outline">
-                    <Icon name="Info" className="mr-2" size={18} />
-                    Подробнее
+                  <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => addToCart(build)}>
+                    <Icon name="ShoppingCart" className="mr-2" size={18} />
+                    В корзину
                   </Button>
                 </CardContent>
               </Card>
@@ -410,6 +468,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} onAuth={handleAuth} />
+      <CartSheet open={cartOpen} onOpenChange={setCartOpen} userId={user?.id || null} />
     </div>
   );
 };

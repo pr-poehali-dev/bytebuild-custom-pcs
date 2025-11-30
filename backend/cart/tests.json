@@ -1,0 +1,37 @@
+{
+  "tests": [
+    {
+      "name": "Get cart items",
+      "method": "GET",
+      "headers": {
+        "X-User-Id": "999"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "count": 0
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Add item to cart",
+      "method": "POST",
+      "headers": {
+        "X-User-Id": "999"
+      },
+      "body": {
+        "build_name": "Test Build",
+        "build_price": 95000,
+        "build_specs": "i5 • RTX 3060 • 16GB",
+        "build_category": "Gaming",
+        "quantity": 1
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "item": {
+          "user_id": 999
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
