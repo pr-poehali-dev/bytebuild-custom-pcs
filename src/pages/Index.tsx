@@ -140,7 +140,7 @@ const Index = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              <span className="gradient-racing bg-clip-text text-transparent">Калькулятор</span> конфигураций
+              Калькулятор конфигураций
             </h2>
             <p className="text-xl text-muted-foreground">Подберите идеальный ПК за 30 секунд</p>
           </div>
