@@ -79,7 +79,7 @@ const Index = () => {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 cursor-pointer">
-            <div className="text-3xl">🦅</div>
+            <div className="text-3xl text-primary">🦅</div>
             <span className="text-2xl font-bold text-primary">ByteBuild</span>
           </a>
           <div className="hidden md:flex gap-6">
