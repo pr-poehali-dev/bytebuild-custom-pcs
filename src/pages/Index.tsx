@@ -99,11 +99,11 @@ const Index = () => {
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
           <div className="inline-block mb-6">
-            <Badge className="text-lg px-6 py-2 gradient-racing">Собираем мощь вашей победы</Badge>
+            <Badge className="text-lg px-6 py-2 bg-primary text-primary-foreground">Собираем мощь вашей победы</Badge>
           </div>
           <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
             Собираем ПК<br />
-            <span className="gradient-racing bg-clip-text text-transparent">быстрее скорости света</span>
+            <span className="text-primary">быстрее скорости света</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             Молодая команда профи. Индивидуальный подход. Полная гарантия. 
@@ -154,7 +154,7 @@ const Index = () => {
               <div>
                 <div className="flex justify-between mb-4">
                   <label className="text-lg font-semibold">Ваш бюджет</label>
-                  <span className="text-2xl font-black gradient-racing bg-clip-text text-transparent">
+                  <span className="text-2xl font-black text-primary">
                     {budget[0].toLocaleString('ru-RU')} ₽
                   </span>
                 </div>
@@ -216,7 +216,7 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-primary/20">
-                  <span className="text-3xl font-black gradient-racing bg-clip-text text-transparent">
+                  <span className="text-3xl font-black text-primary">
                     {recommended.price.toLocaleString('ru-RU')} ₽
                   </span>
                   <Button size="lg" className="bg-primary hover:bg-primary/90 glow-cyan">
@@ -234,7 +234,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Готовые <span className="gradient-racing bg-clip-text text-transparent">сборки</span>
+              Готовые <span className="text-primary">сборки</span>
             </h2>
             <p className="text-xl text-muted-foreground">Проверенные конфигурации, готовые к работе</p>
           </div>
@@ -249,7 +249,7 @@ const Index = () => {
                   <CardDescription className="text-base">{build.specs}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-black gradient-racing bg-clip-text text-transparent mb-4">
+                  <div className="text-2xl font-black text-primary mb-4">
                     {build.price.toLocaleString('ru-RU')} ₽
                   </div>
                   <Button className="w-full" variant="outline">
@@ -267,7 +267,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Процесс <span className="gradient-racing bg-clip-text text-transparent">сборки</span>
+              Процесс <span className="text-primary">сборки</span>
             </h2>
             <p className="text-xl text-muted-foreground">От консультации до доставки — всё под контролем</p>
           </div>
@@ -301,7 +301,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Портфолио <span className="gradient-racing bg-clip-text text-transparent">наших сборок</span>
+              Портфолио <span className="text-primary">наших сборок</span>
             </h2>
             <p className="text-xl text-muted-foreground">Каждая сборка — произведение искусства</p>
           </div>
@@ -326,7 +326,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Команда <span className="gradient-racing bg-clip-text text-transparent">мечты</span>
+              Команда <span className="text-primary">мечты</span>
             </h2>
             <p className="text-xl text-muted-foreground">Два энтузиаста, которые живут своим делом</p>
           </div>
@@ -365,11 +365,11 @@ const Index = () => {
 
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-3xl text-center">
-          <div className="p-12 rounded-2xl gradient-racing">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">
+          <div className="p-12 rounded-2xl bg-primary">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-primary-foreground">
               Готовы собрать свою мощь?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-xl text-primary-foreground/90 mb-8">
               Бесплатная консультация. Индивидуальный подбор. Полная гарантия.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
@@ -377,7 +377,7 @@ const Index = () => {
                 <Icon name="MessageCircle" className="mr-2" size={24} />
                 Написать в Telegram
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
                 <Icon name="Phone" className="mr-2" size={24} />
                 Позвонить
               </Button>
@@ -391,7 +391,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
               <div className="text-3xl">⚡</div>
-              <span className="text-2xl font-bold gradient-racing bg-clip-text text-transparent">ByteBuild</span>
+              <span className="text-2xl font-bold text-primary">ByteBuild</span>
             </div>
             <div className="text-muted-foreground">
               © 2024 ByteBuild. Собираем мощь вашей победы.
